@@ -1,1 +1,1 @@
-## Upcoming events
+# Upcoming events
