@@ -9,11 +9,17 @@
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-#
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
 
+import os
+import sys
+
+sys.path.append(os.path.abspath("./_ext"))
+
+extensions = ['sphinx-cal']
+
+
+# -- Sphinx Cal Config ----------
+event_pattern = '_workshops/2021/*'
 
 # -- Project information -----------------------------------------------------
 
@@ -29,7 +35,7 @@ release = 'v0.1.0'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = [
+extensions += [
     'myst_nb',
 ]
 
@@ -57,7 +63,6 @@ html_theme_options = {
     'show_prev_next': False,
 }
 
-templates_path = ['_templates']
 html_sidebars = {
     'index': ['left.html'],
     'sign-up': ['left.html'],
