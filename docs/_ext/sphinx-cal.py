@@ -93,14 +93,14 @@ def setup(app):
     )
     app.add_config_value(  # Where the events files are stored
         name="calendar_loc",
-        default="_static/calendar.ics",
+        default="_build/_static/calendar.ics",
         rebuild='',
     )
 
     app.connect("config-inited", find_events)
     # app.connect("doctree-read", process_events)
     app.add_transform(CheckFrontMatter)
-    app.connect("env-check-consistency", save_calendar)
+    app.connect("build-finished", save_calendar)
 
     # TODO: connect to save calendar
 
