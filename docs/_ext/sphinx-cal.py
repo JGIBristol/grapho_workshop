@@ -93,7 +93,7 @@ def setup(app):
     )
     app.add_config_value(  # Where the events files are stored
         name="calendar_loc",
-        default="_build/calendar.ics",
+        default="calendar.ics",
         rebuild='',
     )
 
