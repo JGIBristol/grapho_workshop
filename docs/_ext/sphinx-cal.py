@@ -2,6 +2,8 @@ from docutils import nodes
 import logging
 import os
 from glob import glob
+from docutils import nodes
+
 from ics import Calendar, Event
 
 from docutils.parsers.rst import Directive
@@ -38,13 +40,13 @@ def find_events(app, config):  # analagous to config_inited in ablog
     app.config.found_events = matched_patterns
     print('matched patterns:', matched_patterns)
 
+    if len(matched_patterns) > 0:
+        app.config.calendar = Calendar()  # Create ICS object
 
-def process_events(app, doctree):  # analagous to process_posts in ablog
-    """"
-    - make sure that datetimes can be read by docutils
-    """
-    # env = app.builder.env
-    # TODO: Write
+
+def save_calendar(app, env):
+    with open(app.config.calendar_loc, 'w') as f:
+        f.write(str(app.config.calendar))
 
 
 class CheckFrontMatter(SphinxTransform):
@@ -69,19 +71,38 @@ class CheckFrontMatter(SphinxTransform):
         metadata = {fn.children[0].astext(): fn.children[1].astext() for fn in docinfo.traverse(nodes.field)}
         print('metadata', metadata)
 
+        event = Event()
+        event.name = metadata['title']
+        event.categories = [metadata['category']]  # TODO: allow multiple categories
+        event.begin = metadata['start-time']
+        event.end = metadata['end-time']
+        event.location = metadata['location']
+        event.url = metadata['reg-url']
+
+        self.config.calendar.events.add(event)
+
 
 def setup(app):
-    # TODO: Delete:
+    # TODO: Add directives for displaying calendar and upcoming events.
     # app.add_directive("helloworld", HelloWorld)
 
     app.add_config_value(  # Where the events files are stored
         name="event_pattern",
         default="_events/*/*",
-        rebuild='',  # TODO: check: not sure if true
+        rebuild='',
     )
+    app.add_config_value(  # Where the events files are stored
+        name="calendar_loc",
+        default="_build/calendar.ics",
+        rebuild='',
+    )
+
     app.connect("config-inited", find_events)
-    app.connect("doctree-read", process_events)
+    # app.connect("doctree-read", process_events)
     app.add_transform(CheckFrontMatter)
+    app.connect("env-check-consistency", save_calendar)
+
+    # TODO: connect to save calendar
 
     return {
         'version': '0.1',
