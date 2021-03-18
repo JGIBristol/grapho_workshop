@@ -10,8 +10,6 @@ from docutils.parsers.rst import Directive
 
 from sphinx.transforms import SphinxTransform
 
-# TODO: Create calendar object in a "connect"?
-# TODO: Add ICS files from event posts in a transform
 # TODO: Create calendar directive? (for displaying calendar) - with download ics file
 # TODO: Create upcoming events directive? (for displaying upcoming events)
 
