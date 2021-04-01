@@ -1,0 +1,15 @@
+---
+title: Visualising your Visualisations
+category: workshop
+start-time: '2021-06-08T13:00:00Z'
+end-time: '2021-06-08T14:00:00Z'
+reg-url: https://www.google.com
+location: Online
+---
+This is a **1-hour workshop** which will help you visualise how you make visualisations, and will support data visualisation research.
+
+In the workshop, we will:
+- Tell you about the  [What Aren't You Seeing?](https://www.turing.ac.uk/research/research-projects/ways-what-arent-you-seeing) (WAYS) research project.
+- Help you to get up and running with the [Grapho](https://github.com/jamestripp/grapho) package, which will record code and image histories during a data visualisation challenge.
+- Give you a short data visualisation challenge
+- Show you how to visualise your visualisations

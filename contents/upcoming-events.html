@@ -141,24 +141,29 @@
                 
   <div class="section" id="upcoming-events">
 <h1>Upcoming events<a class="headerlink" href="#upcoming-events" title="Permalink to this headline">¶</a></h1>
-<div id='calendar'></div>
-<p class="text-right">
-  <a href="../_static/calendar.ics">Download calendar file</a>
-</p>
-<script type="module">
-  import dayGridPlugin from '@fullcalendar/daygrid'
-  import iCalendarPlugin from '@fullcalendar/icalendar'
+<!--Links are relative to the contents directory (where the upcoming-events.md file is)-->
+<html>
+  <head>
+    <link href="../_static/css/fullcalendar.main.min.css" rel="stylesheet"/>
+    <link href="../_static/css/calendar.css" rel="stylesheet"/>
 
-  var calendar = new Calendar(calendarEl, {
-    plugins: [dayGridPlugin, iCalendarPlugin],
-    events: {
-      url: '../_static/calendar.ics',
-      format: 'ics'
-    }
-  })
+    <meta charset="utf-8" />
 
-  calendar.render()
-</script>
+    <script src="../_static/js/fullcalendar.ical.js"></script>
+    <script src="../_static/js/fullcalendar.main.js"></script>
+    <script src="../_static/js/fullcalendar.main.global.js"></script>
+    <script src="../_static/js/view-calendar.js"></script>
+
+  </head>
+  <body>
+
+    <div id="loading">loading...</div>
+
+    <div id="calendar"></div>
+
+  </body>
+</html>
+<p><a class="reference download internal" download="" href="../_downloads/8862200d298f25a90331ea34d6757120/calendar.ics"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">the</span> <span class="pre">.ics</span> <span class="pre">file</span></code></a>.</p>
 </div>
 
 
