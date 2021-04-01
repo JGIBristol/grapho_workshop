@@ -1,4 +1,3 @@
-from docutils import nodes
 import logging
 import os
 from glob import glob
@@ -44,7 +43,7 @@ def find_events(app, config):  # analagous to config_inited in ablog
 
 def save_calendar(app, env):
     calendar_loc = os.path.join(app.srcdir, app.config.calendar_loc)
-    print(calendar_loc)
+    logging.info(f"Saving calendar.ics to location :{calendar_loc}")
     with open(calendar_loc, 'w') as f:
         f.write(str(app.config.calendar))
 
@@ -98,7 +97,6 @@ def setup(app):
     )
 
     app.connect("config-inited", find_events)
-    # app.connect("doctree-read", process_events)
     app.add_transform(CheckFrontMatter)
     app.connect("build-finished", save_calendar)  # not the best choice of event if directives use local ical
 
