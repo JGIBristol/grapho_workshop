@@ -33,7 +33,30 @@ jobs:
     - name: Build the site
       run: |
         sphinx-build docs/ docs/_build/
-
+    
+    # Save the updated calendar file (commit)
+    - name: Commit file
+      id: commit
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "github-actions"
+        git add docs/_static/calendar.ics
+        if [-z "$(git status --porcelain)"]; then
+           echo "::set-output name=push::false"
+        else
+           git commit -m "Update calendar.ics" -a
+           echo "::set-output name=push::true"
+        fi
+      shell: bash
+      
+      # Save the updated calendar file (push)
+    - name: Push changes
+      if: steps.commit.outputs.push == 'true'
+      uses: ad-m/github-push-action@master
+      with:
+         github_token: ${{ secrets.GITHUB_TOKEN }}
+         branch: main
+         
     # Push the book's HTML to github-pages
     - name: GitHub Pages action
       uses: peaceiris/actions-gh-pages@v3.5.9
