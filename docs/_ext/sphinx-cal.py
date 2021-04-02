@@ -97,8 +97,6 @@ def setup(app):
     app.connect("config-inited", find_events)
     app.connect("env-before-read-docs", add_events_docs_to_docnames)
     app.connect("env-check-consistency", add_events_to_calendar)
-    # app.add_transform(CheckFrontMatter)
-    # app.connect("build-finished", save_calendar)  # not the best choice of event if directives use local ical
 
     # TODO: connect to save calendar
 
