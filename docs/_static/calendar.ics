@@ -3,11 +3,20 @@ VERSION:2.0
 PRODID:ics.py - http://git.io/lLljaA
 BEGIN:VEVENT
 CATEGORIES:workshop
+DTEND:20210705T140000Z
+LOCATION:Online
+DTSTART:20210705T130000Z
+SUMMARY:Visualising your Visualisations
+UID:d2cffe67-b4fc-455d-a1d7-b38cb412c5eb@d2cf.org
+URL:https://www.google.com
+END:VEVENT
+BEGIN:VEVENT
+CATEGORIES:workshop
 DTEND:20210608T140000Z
 LOCATION:Online
 DTSTART:20210608T130000Z
 SUMMARY:Visualising your Visualisations
-UID:4b8250d8-d431-4cfb-8633-37b9ae04e0d5@4b82.org
+UID:baeda4f5-8760-4ba7-91b8-840515c27577@baed.org
 URL:https://www.google.com
 END:VEVENT
 BEGIN:VEVENT
@@ -16,7 +25,7 @@ DTEND:20210617T140000Z
 LOCATION:Online
 DTSTART:20210617T130000Z
 SUMMARY:Visualising your Visualisations
-UID:3f40994c-19cf-4160-b1f6-981ef542362b@3f40.org
+UID:21ab3372-c25a-4da0-bfe8-0c73cab0d3be@21ab.org
 URL:https://www.google.com
 END:VEVENT
 END:VCALENDAR
